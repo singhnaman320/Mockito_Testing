@@ -88,5 +88,15 @@ public class EmployeeServiceTest {
 
         EmployeeDao employeeDao = createMock();
         employeeService = new EmployeeServiceImpl(employeeDao);
+
+        try {
+
+
+
+        } catch (Exception e) {
+
+            throw new RuntimeException(e);
+
+        }
     }
 }
