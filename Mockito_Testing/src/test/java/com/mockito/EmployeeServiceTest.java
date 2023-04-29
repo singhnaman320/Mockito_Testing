@@ -53,6 +53,15 @@ public class EmployeeServiceTest {
 
         assertThrows(NullPointerException.class, ()->employeeService.addEmployee(null));
 
+        assertThrows(SomeThingWrongException.class, ()->employeeService
+                .addEmployee(new Employee(-1, "Naman", 2.5, "Engineering")));
+
+        assertThrows(SomeThingWrongException.class, ()->employeeService
+                .addEmployee(new Employee(3, "", 2.0, "HR")));
+
+        assertThrows(SomeThingWrongException.class, ()->employeeService
+                .addEmployee(new Employee(5, "Kaushik", 7.6, "Engineeering")));
+
 
 
     }
