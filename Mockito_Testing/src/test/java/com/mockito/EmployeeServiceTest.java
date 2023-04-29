@@ -63,7 +63,24 @@ public class EmployeeServiceTest {
                 .addEmployee(new Employee(5, "Kaushik", 7.6, "Engineeering")));
 
 
+        try {
 
+            verify(employeeDao, times(1)).addEmployee(null);
+
+            verify(employeeDao, times(1))
+                    .addEmployee(new Employee(-1, "Naman", 2.5, "Engineering"));
+
+            verify(employeeDao, times(1))
+                    .addEmployee(new Employee(3, "", 2.0, "HR"));
+
+            verify(employeeDao, times(1))
+                    .addEmployee(new Employee(5, "Kaushik", 7.6, "Engineeering"));
+
+        } catch (SomeThingWrongException e) {
+
+            e.printStackTrace();
+
+        }
     }
 
     @Test
