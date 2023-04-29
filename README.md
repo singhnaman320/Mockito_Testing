@@ -1,5 +1,5 @@
 # Mockito_Testing
 This repository deals with codebase of Java application and its testing using Mockito
 
-![MasterHead](https://raw.githubusercontent.com/mockito/mockito/main/src/javadoc/org/mockito/logo.png)
+<img width = 65% src="https://media.jvt.me/35891268eb.png"/> 
 
