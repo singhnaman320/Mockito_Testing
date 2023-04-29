@@ -1,7 +1,6 @@
 package com.mockito.exceptions;
 
 public class NoRecordFoundException extends Exception{
-
     public NoRecordFoundException(){
 
     }

@@ -1,7 +1,6 @@
 package com.mockito.exceptions;
 
 public class SomeThingWrongException extends Exception{
-
     public SomeThingWrongException(){
 
     }
