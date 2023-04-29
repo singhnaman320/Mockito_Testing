@@ -6,13 +6,13 @@ public class Employee {
 
     private Integer empId;
     private String name;
-    private String salary;
+    private double salary;
     private String department;
 
     public Employee() {
     }
 
-    public Employee(Integer empId, String name, String salary, String department) {
+    public Employee(Integer empId, String name, double salary, String department) {
         this.empId = empId;
         this.name = name;
         this.salary = salary;
@@ -24,7 +24,7 @@ public class Employee {
         return "Employee{" +
                 "empId=" + empId +
                 ", name='" + name + '\'' +
-                ", salary='" + salary + '\'' +
+                ", salary=" + salary +
                 ", department='" + department + '\'' +
                 '}';
     }
@@ -34,7 +34,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(empId, employee.empId) && Objects.equals(name, employee.name) && Objects.equals(salary, employee.salary) && Objects.equals(department, employee.department);
+        return Double.compare(employee.salary, salary) == 0 && Objects.equals(empId, employee.empId) && Objects.equals(name, employee.name) && Objects.equals(department, employee.department);
     }
 
     @Override
@@ -58,11 +58,11 @@ public class Employee {
         this.name = name;
     }
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
