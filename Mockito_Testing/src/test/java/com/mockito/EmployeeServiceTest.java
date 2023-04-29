@@ -29,9 +29,9 @@ public class EmployeeServiceTest {
             Mockito.doThrow(NullPointerException.class).when(employeeDao).addEmployee(null);
 
             //throw SomeThingWrongException if any instance variable has incorrect value
-            ArgumentMatcher<Employee> matchArguments = employee -> employee.getEmpId() <= 0 || employee.getName() == null
-                    || employee.getName().equals("") || employee.getSalary() < 1.5 || employee.getSalary() > 100.0 ||
-                    employee.getDepartment() == null || employee.getDepartment().equals("");
+            ArgumentMatcher<Employee> matchArguments = employee -> employee.getEmpId() <= 0 || (employee.getName() == null
+                    || employee.getName().equals("")) || (employee.getSalary() < 1.5 || employee.getSalary() > 100.0) ||
+                    (employee.getDepartment() == null || employee.getDepartment().equals(""));
 
             Mockito.doThrow(SomeThingWrongException.class).when(employeeDao).addEmployee(argThat(matchArguments));
 
@@ -49,6 +49,7 @@ public class EmployeeServiceTest {
     public void testAddEmployee(){
 
         EmployeeDao employeeDao = createMock();
+
         employeeService = new EmployeeServiceImpl(employeeDao);
 
         assertThrows(NullPointerException.class, ()->employeeService.addEmployee(null));
@@ -60,7 +61,7 @@ public class EmployeeServiceTest {
                 .addEmployee(new Employee(3, "", 2.0, "HR")));
 
         assertThrows(SomeThingWrongException.class, ()->employeeService
-                .addEmployee(new Employee(5, "Kaushik", 7.6, "Engineeering")));
+                .addEmployee(new Employee(5, "Kaushik", 7.6, "Engineering")));
 
 
         try {

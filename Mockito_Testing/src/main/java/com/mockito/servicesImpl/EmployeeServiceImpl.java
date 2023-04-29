@@ -10,7 +10,7 @@ import java.util.List;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeDao employeeDao;
+    EmployeeDao employeeDao;
     public EmployeeServiceImpl(EmployeeDao employeeDao){
         this.employeeDao = employeeDao;
 
