@@ -8,8 +8,9 @@ import com.mockito.services.EmployeeService;
 import com.mockito.servicesImpl.EmployeeServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatcher;
-import org.mockito.Mock;
 import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import static org.mockito.Mockito.*;
 
@@ -49,6 +50,11 @@ public class EmployeeServiceTest {
 
         EmployeeDao employeeDao = createMock();
         employeeService = new EmployeeServiceImpl(employeeDao);
+
+        assertThrows(NullPointerException.class, ()->employeeService.addEmployee(null));
+
+
+
     }
 
     @Test
