@@ -24,9 +24,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void addEmployee(Employee employee) throws SomeThingWrongException {
 
+        employeeDao.addEmployee(employee);
     }
     @Override
     public List<Employee> allEmployeesList() throws NoRecordFoundException {
-        return null;
+
+        return employeeDao.getEmployeeList();
     }
 }
