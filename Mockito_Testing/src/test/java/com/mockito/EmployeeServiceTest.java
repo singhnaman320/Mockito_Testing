@@ -1,6 +1,7 @@
 package com.mockito;
 
 import com.mockito.dao.EmployeeDao;
+import com.mockito.exceptions.NoRecordFoundException;
 import com.mockito.exceptions.SomeThingWrongException;
 import com.mockito.modelDTO.Employee;
 import com.mockito.services.EmployeeService;
@@ -31,11 +32,15 @@ public class EmployeeServiceTest {
 
             Mockito.doThrow(SomeThingWrongException.class).when(employeeDao).addEmployee(argThat(matchArguments));
 
+            //throw NoRecordFoundException if no Record in the table
+            Mockito.when(employeeDao.getEmployeeList()).thenThrow(NoRecordFoundException.class);
 
-        } catch (Exception e) {
+        } catch (SomeThingWrongException | NoRecordFoundException exception) {
 
-            throw new RuntimeException(e);
+            System.out.println(exception);
         }
         return employeeDao;
     }
+
+
 }
