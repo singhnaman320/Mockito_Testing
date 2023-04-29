@@ -5,6 +5,8 @@ import com.mockito.exceptions.NoRecordFoundException;
 import com.mockito.exceptions.SomeThingWrongException;
 import com.mockito.modelDTO.Employee;
 import com.mockito.services.EmployeeService;
+import com.mockito.servicesImpl.EmployeeServiceImpl;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatcher;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -15,7 +17,7 @@ public class EmployeeServiceTest {
 
     private EmployeeService employeeService;
 
-    private EmployeeDao createMockForInsertion(){
+    private EmployeeDao createMock(){
 
         //creating mock object using mockito
 
@@ -42,5 +44,17 @@ public class EmployeeServiceTest {
         return employeeDao;
     }
 
+    @Test
+    public void testAddEmployee(){
 
+        EmployeeDao employeeDao = createMock();
+        employeeService = new EmployeeServiceImpl(employeeDao);
+    }
+
+    @Test
+    public void testGetEmployeeList(){
+
+        EmployeeDao employeeDao = createMock();
+        employeeService = new EmployeeServiceImpl(employeeDao);
+    }
 }
