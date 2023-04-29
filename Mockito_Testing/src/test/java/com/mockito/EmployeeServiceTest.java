@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 public class EmployeeServiceTest {
 
-    private EmployeeService employeeService;
+    EmployeeService employeeService;
 
     private EmployeeDao createMock(){
 
@@ -74,7 +74,7 @@ public class EmployeeServiceTest {
                     .addEmployee(new Employee(3, "", 2.0, "HR"));
 
             verify(employeeDao, times(1))
-                    .addEmployee(new Employee(5, "Kaushik", 7.6, "Engineeering"));
+                    .addEmployee(new Employee(5, "Kaushik", 7.6, "Engineering"));
 
         } catch (SomeThingWrongException e) {
 
@@ -91,11 +91,12 @@ public class EmployeeServiceTest {
 
         try {
 
+            assertThrows(NoRecordFoundException.class, ()->employeeDao.getEmployeeList());
+            verify(employeeDao, times(1)).getEmployeeList();
 
+        } catch (NoRecordFoundException exception) {
 
-        } catch (Exception e) {
-
-            throw new RuntimeException(e);
+            System.out.println(exception);;
 
         }
     }
