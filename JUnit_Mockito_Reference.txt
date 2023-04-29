@@ -1,0 +1,128 @@
+Any software
+1. Requirement Analysis (8-10%)
+2. Design (8-10%)
+3. Implementation (5-7%)
+4. Testing (5-7%)
+5. Deployment (2-3%)
+6. Maintainance (63-75%)
+
+Ecommerce application: 2023 (Yash Rajput)
+Yash : Writing code --> Writing classes ---> Writing methods
+standard practice: length of the method should be from 15-25 lines
+A Single method should do only one job
+
+13 different case covered by yash. For every case yash must have written test case using some testing framework
+
+2025: Sunny
+client need some more feature may be possible that sunny require to change some methods written by yash.
+
+13 different case covered by yash should function smoothly + additional cases written by sunny must also. (Y)
+
+How to write test case?
+JUnit is used to write test cases for java methods.
+JUnit is not part of Java standard. It is available in the form of extenral dependency.
+Latest: JUnit-5 (Junit Jupiter)
+
+1. prepare test case
+2. provide input
+3. test case will be executed
+4. provide expect output
+5. match whether the output of method and expected output is same or not
+6. alert the developer for success/failure is
+
+step-1,2 & 4: this will be done by developer
+remaining steps will be done by the JUnit
+
+(i) Lifecyle of Test Case
+
+a. @BeforeAll
+   - will be executed only for one time
+   - this method is required to be static method
+   - it is used to perform intial setup
+   
+b. @BeforeEach
+   - will be executed before each test case
+   - if you want to perform some operation before execution of test case, write here
+
+c. @Test
+   - This is what main test method (case) is
+
+d. @AfterEach
+   - will be executed after each test case
+   - if you want to perform some operation after execution of test case, write here
+   
+e. @AfterAll
+   - will be executed only for one time
+   - this method is required to be static method
+   - it is used to perform clean up action
+
+(ii) behavior of test object
+(iii) an example of testing
+
+A test method
+- Cannot return any value, so return type must be void
+- Cannot accept any parameter
+- Cannot throw any exception
+
+void test-method-name(){
+	body of test case
+}
+
+For every calling of test method (@BeforeEach, @Test and @AfterEach) a new object will be created by the JUnit
+
+test method is in execution
+1. New object of class InstanceStaticBehaviorInTest will be created
+2. Method annotated with @BeforeEach will be called
+3. Method annotated with @test will be called
+4. Method annotated with @AfterEach will be called
+5. object created in the step-01 is eligible for garbage collection as Junit do not reuse the object again for next test case
+
+Note: If @TestInstance(Lifecycle.PER_CLASS) is used with TestClass then only one object for all the test method will be created.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Presentation Layer (Contains UI)
+      ||
+	  || DTO
+	  ||
+ Service Layer (Contains business logic)
+      ||
+	  || DTO (Not Entity)
+	  ||
+    DAO Layer (Contains all DB operation)
+
+(i) Company has a good team of service layer developer; short of DAO layer developer
+(ii) At DAO layer what ORM framework to use is yet to decide or DAO layer developer migrating the code from old ORM to new ORM framework
+
+
+In such conditions, testing using JUnit is not possible because JUnit required implemetation. To test application/service layer in such condition we have to use Mockito (Mojito + Cocktail). 
+
+Mock: not real or authentic but without intention to hurt or decieve
+
+//JUnit requires implementation means?
+
+
+<dependency>
+	<groupId>org.mockito</groupId>
+	<artifactId>mockito-junit-jupiter</artifactId>
+	<version>5.3.1</version>
+	<scope>test</scope>
+</dependency>
+
+Do i need to add Junit dependency also: No
+
+How to create a mock object?
+Mockito class
+ public static <T> T mock(Class<T> classToMock)
+ 
+EmployeeDAO empDAO = Mockito.mock(EmployeeDAO.class);	//this is mock object not real
+
+We can even call methods using mock. By default, all methods of a mock return “uninitialized” or
+“empty” values, e.g., zeros for numeric types (both primitive and boxed), false for booleans, and nulls
+for most other types.
+
+empDAO.getEmployeeList() --> null
+empDAO.isEmplployeeExists(int emp) --> false
+empDAO.totalEmployeeCount() --> 0
+
+when(empDAO.getEmployeeList()).thenReturn(Array.asList(new Employee(...), new Employee(...)));
+when(empDAO.getEmployeeList()).thenThrow(NoRecordFoundException.class)
