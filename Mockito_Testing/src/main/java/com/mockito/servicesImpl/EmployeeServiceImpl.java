@@ -16,7 +16,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         /*
 
-        Make empDAO point to some implementation if it is available. In this example we don't have any implementation
+        Make employeeDao point to some implementation if it is available. In this example we don't have any implementation
         only mock implementation can be used as of now.
 
          */
