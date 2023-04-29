@@ -1,5 +1,7 @@
 package com.mockito.modelDTO;
 
+import java.util.Objects;
+
 public class Employee {
 
     private Integer empId;
@@ -25,6 +27,19 @@ public class Employee {
                 ", salary='" + salary + '\'' +
                 ", department='" + department + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(empId, employee.empId) && Objects.equals(name, employee.name) && Objects.equals(salary, employee.salary) && Objects.equals(department, employee.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(empId, name, salary, department);
     }
 
     public Integer getEmpId() {
