@@ -17,6 +17,16 @@ public class Employee {
         this.department = department;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empId=" + empId +
+                ", name='" + name + '\'' +
+                ", salary='" + salary + '\'' +
+                ", department='" + department + '\'' +
+                '}';
+    }
+
     public Integer getEmpId() {
         return empId;
     }
