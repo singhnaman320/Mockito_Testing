@@ -18,6 +18,7 @@ public class EmployeeServiceTest {
 
     EmployeeService employeeService;
 
+    // Creating the mock object
     private EmployeeDao createMock(){
 
         //creating mock object using mockito
