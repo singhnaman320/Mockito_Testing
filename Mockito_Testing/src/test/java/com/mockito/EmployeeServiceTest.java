@@ -79,7 +79,8 @@ public class EmployeeServiceTest {
             verify(employeeDao, times(1))
                     .addEmployee(new Employee(5, "Kaushik", 0.5, "Engineering"));
 
-
+            verify(employeeDao, times(1))
+                    .addEmployee(new Employee(2, "Nishant", 4.5, ""));
 
         } catch (SomeThingWrongException e) {
 
