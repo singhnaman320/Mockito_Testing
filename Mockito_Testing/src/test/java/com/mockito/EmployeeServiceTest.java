@@ -46,6 +46,7 @@ public class EmployeeServiceTest {
         return employeeDao;
     }
 
+    // Test for creating/adding a new employee
     @Test
     public void testAddEmployee(){
 
